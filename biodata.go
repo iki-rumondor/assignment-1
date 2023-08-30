@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -35,7 +34,7 @@ func getPersonByCode(code *string) (*model.Person, bool) {
 // Fungsi ini akan mengkonversi data JSON ke dalam struct People di dalam folder model. Fungsi ini akan mengembalikan pointer dari struct people.
 func convertDataToModel() (people *model.People) {
 	jsonPath := filepath.Join("data", "participants.json")
-	data, err := ioutil.ReadFile(jsonPath)
+	data, err := os.ReadFile(jsonPath)
 	if err != nil {
 		log.Fatal(err)
 	}
